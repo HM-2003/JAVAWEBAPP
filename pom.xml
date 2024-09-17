@@ -31,30 +31,43 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.2</version>
-                    <configuration>
-                        <verbose>true</verbose>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                        <showWarnings>true</showWarnings>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.2</version>
-                    <configuration>
-                        <path>/</path>
-                        <contextReloadable>true</contextReloadable>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+   <build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <contextReloadable>true</contextReloadable>
+                </configuration>
+            </plugin>
+            <!-- SonarCloud Maven Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+       <properties>
+    <sonar.projectKey>HM-2003_JAVAWEBAPP</sonar.projectKey>
+    <sonar.organization>hm-2003</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.login>${env.SONAR_TOKEN}</sonar.login>
+      </properties>
+</build>
+
 </project>
